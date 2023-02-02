@@ -1,8 +1,28 @@
 \documentclass[12pt, letterpaper]{article}
-\title{My first LaTeX document}
-\author{Hubert Farnsworth\thanks{Funded by the Overleaf team.}}
-\date{August 2022}
+\title{Unit Conversion Examples}
+\author{Alexandra Watkins}
 \begin{document}
 \maketitle
-We have now added a title, author and date to our first \LaTeX{} document!
+\section{Conversion Between SI/US}
+To convert a US measurement $x$ into a metric measurement $y$, multiply by a conversion ratio, $c$, that has the units of $\frac{metric}{US}$. This equation then takes the form of $y=cx$. Example: To convert 5 feet into meters, write the equation $y = c * 5 ft$ and set $c$ to be $ \frac{0.3048m}{1ft}$. This then produces $y = \frac{0.3048m}{1ft} * 5ft = 1.524 m$. Conversion back into US measurements can be done by multiplying by the inverse of $c$, $c^{-1}$, which has the units of $\frac{US}{metric}$. 
+
+Common values for $c$ are:
+\begin{table}[h!]
+    \begin{tabular}{llllllll}
+    Length & $\frac{1.61km}{1mi}$     & $\frac{2.54cm}{1in}$ & $\frac{0.914m}{1yd}$ & $\frac{0.3048m}{1ft}$ &  &  &  \\
+           &                          &                      &                      &                       &  &  &  \\
+    Mass   & $\frac{14.594kg}{1slug}$ &                      &                      &                       &  &  &  \\
+           &                          &                      &                      &                       &  &  &  \\
+    Force  & $\frac{4.448N}{1lb}$     & $\frac{0.278N}{1oz}$ &                      &                       &  &  & 
+    \end{tabular}
+\end{table}
+\subsection{Chaining Conversions}
+Conversions between more esoteric quantities, or just quantities for which $c$ is not directly known, can be accomplished by chaining together multiple conversion ratios. For example, to convert $x$ ounces into $y$ kiloNewtons we would use the chained conversion:
+
+$$ y = x\left(oz\right) * \frac{0.278N}{1oz} * \frac{1kN}{1000N}$$
+\section{Converting Equations}
+Before plugging a converted unit into an equation, you must convert the coefficients of that equation to be in the correct units as well. For example, if we have the equation $y = x^4 + 2x^2 - 5x$ where x is in inches and we want to use feet, we have to rewrite the equation to be:
+
+$$y = \left(\frac{12in}{1ft}\right)^4x + 2 \left(\frac{12in}{1ft}\right)^2x - 5 \left(\frac{12in}{1ft}\right)x$$
+
 \end{document}
